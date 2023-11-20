@@ -26,7 +26,8 @@ function genererPieces(pieces) {
     prixElement.innerText = `Prix: ${article.prix} €`;
 
     const categorieElement = document.createElement("p");
-   categorieElement.innerText = article.categorie;
+    if (article.categorie) {categorieElement.innerText=article.categorie;
+      } 
 
    const descriptionElement = document.createElement("p");
    if (article.description) {descriptionElement.innerText=article.description;
