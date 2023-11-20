@@ -3,8 +3,11 @@ const reponse = await fetch("pieces-autos.json");
 const pieces = await reponse.json();
 
 
+
+
 function genererPieces(pieces) {
   for (let i = 0; i < pieces.length; i++) {
+    
 
 // Récupération de l'élément du DOM qui accueillera les fiches
     const sectionFiches = document.querySelector(".fiches");
@@ -56,6 +59,7 @@ function genererPieces(pieces) {
 
 const boutonTrier = document.querySelector(".btn-trier");
 boutonTrier.addEventListener("click", function () {
+  
      const piecesOrdonnees = Array.from(pieces)
      piecesOrdonnees.sort(function (a, b) {
          return a.prix - b.prix;
@@ -86,6 +90,8 @@ boutonDescription.addEventListener("click", function () {
 
 
 const boutonDecroissant = document.querySelector(".btn-trier-decroissant");
+
+
   boutonDecroissant.addEventListener("click", function () {
     const piecesDécroissant= Array.from(pieces)
          piecesDécroissant.sort(function (a, b) {
@@ -150,3 +156,12 @@ document.querySelector('.disponible')
 
 
 
+const range=document.querySelector("input");
+range.addEventListener("input",function () {
+  const pieceFiltree=pieces.filter(function(pieces){
+    return pieces.prix<=range.value;
+
+  });
+   document.querySelector(".fiches").innerHTML = "";
+    genererPieces(pieceFiltree);
+  });
